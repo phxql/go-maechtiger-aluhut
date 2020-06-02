@@ -1,7 +1,10 @@
 package main
 
 import (
+	"flag"
 	"log"
+	"math/rand"
+	"mkammerer.de/go-maechtiger-aluhut/facts"
 	"net/http"
 	"time"
 
@@ -12,6 +15,17 @@ import (
 var skill alexa.Skill
 
 func main() {
+	// Seed RNG
+	rand.Seed(time.Now().UnixNano())
+
+	address := flag.String("address", "localhost:8192", "address to listen on")
+	help := flag.Bool("help", false, "prints this help")
+	flag.Parse()
+	if *help {
+		flag.Usage()
+		return
+	}
+
 	router := mux.NewRouter()
 	skill = alexa.Skill{
 		ApplicationID:  "amzn1.ask.skill.789b02dc-3997-4f0d-8182-140aec7d9296",
@@ -24,11 +38,11 @@ func main() {
 
 	srv := &http.Server{
 		Handler:      router,
-		Addr:         "localhost:8192",
+		Addr:         *address,
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
-	log.Println("Starting webserver")
+	log.Println("Running on " + *address)
 	log.Fatal(srv.ListenAndServe())
 }
 
@@ -59,8 +73,7 @@ func handleYesIntent(request *alexa.IntentRequest, responseEnvelope *alexa.Respo
 }
 
 func handleConspiracyIntent(request *alexa.IntentRequest, responseEnvelope *alexa.ResponseEnvelope) {
-	// TODO
-	randomFact := "TODO"
+	randomFact := facts.RandomFact()
 	moreFacts := moreFacts
 
 	responseEnvelope.Response.SetOutputSpeech(randomFact + " " + moreFacts)
