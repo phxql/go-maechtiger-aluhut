@@ -2,6 +2,8 @@
 
 An alexa skill which gives a random conspiracy theory when invoked.
 
+[Here's the Amazon shop page]((https://www.amazon.de/Moritz-Kammerer-Mächtiger-Aluhut/dp/B01MRCZJ7Z)). At the moment, this skill is german language only.
+
 ## Building
 
 ```
@@ -14,13 +16,13 @@ go build
 ./go-maechtiger-aluhut
 ```
 
-The skill now runs on `localhost:8192`
+The skill now runs on `localhost:8192/maechtiger-aluhut`
 
 ```
 ./go-maechtiger-aluhut -address :8080
 ```
 
-The skill now runs on `*:8080`
+The skill now runs on `*:8080/maechtiger-aluhut`
 
 ## Usage
 
