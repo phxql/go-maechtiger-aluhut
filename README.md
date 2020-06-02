@@ -1,6 +1,6 @@
 # Mächtiger Aluhut
 
-A alexa skill which gives a random conspiracy theory when invoked.
+An alexa skill which gives a random conspiracy theory when invoked.
 
 ## Building
 
