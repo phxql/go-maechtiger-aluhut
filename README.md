@@ -17,7 +17,7 @@ go build
 The skill now runs on `localhost:8192`
 
 ```
-./go-maechtiger-aluhut :8080
+./go-maechtiger-aluhut -address :8080
 ```
 
 The skill now runs on `*:8080`
