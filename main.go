@@ -49,6 +49,11 @@ func intentDispatchHandler(request *alexa.IntentRequest, response *alexa.Respons
 	}
 }
 
+const welcomeReprompt = "Du kannst dir die neusten Wahrheiten erzählen lassen. Sage dazu, Sag mir die Wahrheit"
+const welcome = "Willkommen beim mächtigen Aluhut. Du kannst dir die absoluten Wahrheiten erzählen lassen. Sage dazu, Sag mir die Wahrheit"
+const goodbye = "Auf Wiedersehen und bleib skeptisch!"
+const moreFacts = "Möchtest du noch eine Wahrheit hören?"
+
 func handleYesIntent(request *alexa.IntentRequest, responseEnvelope *alexa.ResponseEnvelope) {
 	handleConspiracyIntent(request, responseEnvelope)
 }
@@ -56,26 +61,25 @@ func handleYesIntent(request *alexa.IntentRequest, responseEnvelope *alexa.Respo
 func handleConspiracyIntent(request *alexa.IntentRequest, responseEnvelope *alexa.ResponseEnvelope) {
 	// TODO
 	randomFact := "TODO"
-	moreFacts := "Möchtest du noch eine Wahrheit hören?"
+	moreFacts := moreFacts
 
 	responseEnvelope.Response.SetOutputSpeech(randomFact + " " + moreFacts)
 	responseEnvelope.Response.SetReprompt(moreFacts)
 }
 
 func handleStopOrCancelIntent(request *alexa.IntentRequest, responseEnvelope *alexa.ResponseEnvelope) {
-	responseEnvelope.Response.SetOutputSpeech("Auf Wiedersehen und bleib skeptisch!")
+	responseEnvelope.Response.SetOutputSpeech(goodbye)
 }
 
 func handleHelpIntent(request *alexa.IntentRequest, responseEnvelope *alexa.ResponseEnvelope) {
-	speechText := "Du kannst dir die neusten Wahrheiten erzählen lassen. Sage dazu, Sag mir die Wahrheit"
-
-	responseEnvelope.Response.SetOutputSpeech(speechText)
-	responseEnvelope.Response.SetReprompt(speechText)
+	responseEnvelope.Response.SetOutputSpeech(welcomeReprompt)
+	responseEnvelope.Response.SetReprompt(welcomeReprompt)
 }
 
 func launchRequestHandler(request *alexa.LaunchRequest, responseEnvelope *alexa.ResponseEnvelope) {
-	responseEnvelope.Response.SetOutputSpeech("Willkommen beim mächtigen Aluhut. Du kannst dir die absoluten Wahrheiten erzählen lassen. Sage dazu, Sag mir die Wahrheit")
-	responseEnvelope.Response.SetReprompt("Du kannst dir die neusten Wahrheiten erzählen lassen. Sage dazu, Sag mir die Wahrheit")
+
+	responseEnvelope.Response.SetOutputSpeech(welcome)
+	responseEnvelope.Response.SetReprompt(welcomeReprompt)
 }
 
 func sessionEndedRequestHandler(request *alexa.SessionEndedRequest, responseEnvelope *alexa.ResponseEnvelope) {
