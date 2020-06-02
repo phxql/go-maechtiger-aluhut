@@ -74,7 +74,6 @@ func handleYesIntent(request *alexa.IntentRequest, responseEnvelope *alexa.Respo
 
 func handleConspiracyIntent(request *alexa.IntentRequest, responseEnvelope *alexa.ResponseEnvelope) {
 	randomFact := facts.RandomFact()
-	moreFacts := moreFacts
 
 	responseEnvelope.Response.SetOutputSpeech(randomFact + " " + moreFacts)
 	responseEnvelope.Response.SetReprompt(moreFacts)
