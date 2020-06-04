@@ -2,7 +2,7 @@
 
 An alexa skill which gives a random conspiracy theory when invoked.
 
-[Here's the Amazon shop page]((https://www.amazon.de/Moritz-Kammerer-Mächtiger-Aluhut/dp/B01MRCZJ7Z)). At the moment, this skill is german language only.
+[Here's the Amazon shop page](https://www.amazon.de/Moritz-Kammerer-Mächtiger-Aluhut/dp/B01MRCZJ7Z). At the moment, this skill is german language only.
 
 ## Building
 
